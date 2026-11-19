@@ -1,5 +1,5 @@
 # Store Doctor — Architecture Decisions
-r8 · Nov 18, 2026 · Overrides the private PRD (not in repo) on conflict. TODO: sync PRD (share URL is now `/report/[username]/[public_id]`; PRD line 57 "creator's handle filled in" is void, see #23).
+r8 · Nov 18, 2026 · Overrides the private PRD (not in repo) on conflict. PRD synced to r8 on Nov 19.
 
 ## Principles
 - Bit.ly-shaped: key = stan.store username, value = audit. Read-heavy by design; v1 target ~50 audits. Build the shape, not the scale.
@@ -152,7 +152,7 @@ DELETE FROM blocked_usernames WHERE username = lower('<username>');
 - Risk: Stan's RSC shape can change without notice → adapter, fixtures, Zod, canary.
 
 ## Open
-- Name: Store Doctor vs something shareable that doesn't sound official. Earnings default-rate sources (blocks #13). PRD sync.
+- Name: Store Doctor vs something shareable that doesn't sound official. Earnings default-rate sources (blocks #13).
 
 ## History
 - r8: threat model (harassment in scope, agencies out); no `@handle` in shares (#23); retention (#24): profile fields 24 h, results until takedown; takedown deletes rows; Re-run uses the 24 h fetch cache, `fresh` + `/rerun` route removed.
